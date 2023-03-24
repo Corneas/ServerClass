@@ -1,0 +1,15 @@
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\bin\Debug\net5.0\DeadLock.exe
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\bin\Debug\net5.0\DeadLock.deps.json
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\bin\Debug\net5.0\DeadLock.runtimeconfig.json
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\bin\Debug\net5.0\DeadLock.runtimeconfig.dev.json
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\bin\Debug\net5.0\DeadLock.dll
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\bin\Debug\net5.0\ref\DeadLock.dll
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\bin\Debug\net5.0\DeadLock.pdb
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\DeadLock.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\DeadLock.AssemblyInfoInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\DeadLock.AssemblyInfo.cs
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\DeadLock.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\DeadLock.dll
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\ref\DeadLock.dll
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\DeadLock.pdb
+C:\Users\USER\ServerClass\2023_03_24\DeadLock\obj\Debug\net5.0\DeadLock.genruntimeconfig.cache
