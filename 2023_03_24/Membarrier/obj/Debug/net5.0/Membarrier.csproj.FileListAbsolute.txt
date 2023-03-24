@@ -1,0 +1,15 @@
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\bin\Debug\net5.0\Membarrier.exe
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\bin\Debug\net5.0\Membarrier.deps.json
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\bin\Debug\net5.0\Membarrier.runtimeconfig.json
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\bin\Debug\net5.0\Membarrier.runtimeconfig.dev.json
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\bin\Debug\net5.0\Membarrier.dll
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\bin\Debug\net5.0\ref\Membarrier.dll
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\bin\Debug\net5.0\Membarrier.pdb
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\Membarrier.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\Membarrier.AssemblyInfoInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\Membarrier.AssemblyInfo.cs
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\Membarrier.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\Membarrier.dll
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\ref\Membarrier.dll
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\Membarrier.pdb
+C:\Users\USER\ServerClass\2023_03_24\Membarrier\obj\Debug\net5.0\Membarrier.genruntimeconfig.cache

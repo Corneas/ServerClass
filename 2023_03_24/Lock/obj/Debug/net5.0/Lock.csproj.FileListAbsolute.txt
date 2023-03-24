@@ -1,0 +1,15 @@
+C:\Users\USER\ServerClass\2023_03_24\Lock\bin\Debug\net5.0\Lock.exe
+C:\Users\USER\ServerClass\2023_03_24\Lock\bin\Debug\net5.0\Lock.deps.json
+C:\Users\USER\ServerClass\2023_03_24\Lock\bin\Debug\net5.0\Lock.runtimeconfig.json
+C:\Users\USER\ServerClass\2023_03_24\Lock\bin\Debug\net5.0\Lock.runtimeconfig.dev.json
+C:\Users\USER\ServerClass\2023_03_24\Lock\bin\Debug\net5.0\Lock.dll
+C:\Users\USER\ServerClass\2023_03_24\Lock\bin\Debug\net5.0\ref\Lock.dll
+C:\Users\USER\ServerClass\2023_03_24\Lock\bin\Debug\net5.0\Lock.pdb
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\Lock.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\Lock.AssemblyInfoInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\Lock.AssemblyInfo.cs
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\Lock.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\Lock.dll
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\ref\Lock.dll
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\Lock.pdb
+C:\Users\USER\ServerClass\2023_03_24\Lock\obj\Debug\net5.0\Lock.genruntimeconfig.cache

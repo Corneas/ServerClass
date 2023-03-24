@@ -1,0 +1,16 @@
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\bin\Debug\net5.0\InterLocked.exe
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\bin\Debug\net5.0\InterLocked.deps.json
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\bin\Debug\net5.0\InterLocked.runtimeconfig.json
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\bin\Debug\net5.0\InterLocked.runtimeconfig.dev.json
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\bin\Debug\net5.0\InterLocked.dll
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\bin\Debug\net5.0\ref\InterLocked.dll
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\bin\Debug\net5.0\InterLocked.pdb
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.csproj.AssemblyReference.cache
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.AssemblyInfoInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.AssemblyInfo.cs
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.dll
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\ref\InterLocked.dll
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.pdb
+C:\Users\USER\ServerClass\2023_03_24\InterLocked\obj\Debug\net5.0\InterLocked.genruntimeconfig.cache
