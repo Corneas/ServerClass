@@ -1,0 +1,16 @@
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\bin\Debug\net5.0\SpinLock.exe
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\bin\Debug\net5.0\SpinLock.deps.json
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\bin\Debug\net5.0\SpinLock.runtimeconfig.json
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\bin\Debug\net5.0\SpinLock.runtimeconfig.dev.json
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\bin\Debug\net5.0\SpinLock.dll
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\bin\Debug\net5.0\ref\SpinLock.dll
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\bin\Debug\net5.0\SpinLock.pdb
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.csproj.AssemblyReference.cache
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.AssemblyInfoInputs.cache
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.AssemblyInfo.cs
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.dll
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\ref\SpinLock.dll
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.pdb
+C:\Users\USER\ServerClass\2023_03_27\SpinLock\obj\Debug\net5.0\SpinLock.genruntimeconfig.cache

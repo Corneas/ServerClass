@@ -1,0 +1,16 @@
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\bin\Debug\net5.0\ContextSwitch.exe
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\bin\Debug\net5.0\ContextSwitch.deps.json
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\bin\Debug\net5.0\ContextSwitch.runtimeconfig.json
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\bin\Debug\net5.0\ContextSwitch.runtimeconfig.dev.json
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\bin\Debug\net5.0\ContextSwitch.dll
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\bin\Debug\net5.0\ref\ContextSwitch.dll
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\bin\Debug\net5.0\ContextSwitch.pdb
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.csproj.AssemblyReference.cache
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.AssemblyInfoInputs.cache
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.AssemblyInfo.cs
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.dll
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ref\ContextSwitch.dll
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.pdb
+C:\Users\USER\ServerClass\2023_03_27\ContextSwitch\obj\Debug\net5.0\ContextSwitch.genruntimeconfig.cache
