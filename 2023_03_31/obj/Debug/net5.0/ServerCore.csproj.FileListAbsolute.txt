@@ -1,0 +1,16 @@
+C:\Users\USER\ServerClass\2023_03_31\bin\Debug\net5.0\ServerCore.exe
+C:\Users\USER\ServerClass\2023_03_31\bin\Debug\net5.0\ServerCore.deps.json
+C:\Users\USER\ServerClass\2023_03_31\bin\Debug\net5.0\ServerCore.runtimeconfig.json
+C:\Users\USER\ServerClass\2023_03_31\bin\Debug\net5.0\ServerCore.runtimeconfig.dev.json
+C:\Users\USER\ServerClass\2023_03_31\bin\Debug\net5.0\ServerCore.dll
+C:\Users\USER\ServerClass\2023_03_31\bin\Debug\net5.0\ref\ServerCore.dll
+C:\Users\USER\ServerClass\2023_03_31\bin\Debug\net5.0\ServerCore.pdb
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.AssemblyInfoInputs.cache
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.AssemblyInfo.cs
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.dll
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ref\ServerCore.dll
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.pdb
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.genruntimeconfig.cache
+C:\Users\USER\ServerClass\2023_03_31\obj\Debug\net5.0\ServerCore.csproj.AssemblyReference.cache
