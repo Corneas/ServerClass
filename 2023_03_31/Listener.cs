@@ -5,19 +5,20 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 
-namespace _2023_03_31
+namespace ServerCore
 {
-    internal class Listener
+    public class Listener
     {
         Socket _listenSocket;
+        Func<Session> _sessionFactory;
         Action<Socket> _onAcceptHandler;
 
-        public void Init(IPEndPoint endPoint, Action<Socket> onAcceptHandler)
+        public void Init(IPEndPoint endPoint, Func<Session> sessionFactory)
         {
             // 문지기 생성
             _listenSocket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            _onAcceptHandler -= onAcceptHandler;
-            _onAcceptHandler += onAcceptHandler;
+            _sessionFactory -= sessionFactory;
+            _sessionFactory += sessionFactory;    // 2번
 
             // 문지기 교육
             _listenSocket.Bind(endPoint); // bind : ip주소, port번호 할당
@@ -25,28 +26,31 @@ namespace _2023_03_31
             _listenSocket.Listen(10);
 
             SocketAsyncEventArgs args = new SocketAsyncEventArgs();
-            args.Completed += new EventHandler<SocketAsyncEventArgs>(OnAcceptCompleted); // 이벤트 생성
-            RegisterAccept(args); // 이벤트 등록
+            args.Completed += new EventHandler<SocketAsyncEventArgs>(OnAcceptCompleted); // 이벤트 생성, 3번
+            RegisterAccept(args); // 이벤트 등록, 4번 
         }
+
         void RegisterAccept(SocketAsyncEventArgs args)
         {
             args.AcceptSocket = null;
 
             // 보류중인(pending) 작업이 있는지 여부를 bool 값으로 반환
-            bool pending = _listenSocket.AcceptAsync(args);
+            bool pending = _listenSocket.AcceptAsync(args); // 5번
             if(pending == false)
             {
-                OnAcceptCompleted(null, args);  // null은 sender 불필요, ags는 소켓 객체
+                OnAcceptCompleted(null, args);  // null은 sender 불필요, args는 소켓 객체
             }
         }
 
         void OnAcceptCompleted(object sender, SocketAsyncEventArgs args)
         {
             // Accept()의 블로킹 버전 추가
-            if(args.SocketError == SocketError.Success) // 오류가 없을 경우
+            if(args.SocketError == SocketError.Success) // 오류가 없을 경우, 6번
             {
                 // TODO
-                _onAcceptHandler.Invoke(args.AcceptSocket);
+                Session session = _sessionFactory.Invoke();
+                session.Init(args.AcceptSocket);
+                session.OnConnected(args.AcceptSocket.RemoteEndPoint);
             }
             else // 오류가 발생할 경우
             {
