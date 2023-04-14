@@ -17,7 +17,7 @@ namespace Server
 
     }
 
-    class GameSession : PacketSession
+    class ClientSession : PacketSession
     {
         class Knight
         {
@@ -77,18 +77,15 @@ namespace Server
 
         static void Main(string[] args)
         {
-            // DNS
-            IPHostEntry iphost = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddr = iphost.AddressList[1];
-            IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777); // IP주소, 포트번호 입력
+            string host = Dns.GetHostName();
+            IPHostEntry ipHost = Dns.GetHostEntry(host);
+            IPAddress ipAddr = ipHost.AddressList[0];
+            IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
-            _listener.Init(endPoint, () => { return new GameSession(); });  // 1번
-            Console.WriteLine("Listening...(영업중이야)");
+            _listener.Init(endPoint, () => { return new ClientSession(); });
+            Console.WriteLine("Listening...");
 
-            while (true)
-            {
-                //프로그램 종료 막기 위해 while
-            }
+            while (true) { }
         }
 
         //static void OnAcceptHandler(Socket clientSocket) // 7번
