@@ -29,7 +29,7 @@ namespace ServerCore
                     break;
 
                 // 여기까지 왔으면 패킷 조립 가능
-                OnPacketRecv(new ArraySegment<byte>(buffer.Array, buffer.Offset, dataSize));
+                OnRecvPacket(new ArraySegment<byte>(buffer.Array, buffer.Offset, dataSize));
 
                 processLen += dataSize;
 
@@ -40,7 +40,7 @@ namespace ServerCore
 
         }
         // 상속받은 클래스들은 OnPacketRecv()로 OnRecv를 우회하여 사용
-        public abstract void OnPacketRecv(ArraySegment<byte> buffer);
+        public abstract void OnRecvPacket(ArraySegment<byte> buffer);
     }
 
     public abstract class Session

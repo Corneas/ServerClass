@@ -63,7 +63,7 @@ namespace Server
             Console.WriteLine($"Transferred bytes : {numOfBytes}");
         }
 
-        public override void OnPacketRecv(ArraySegment<byte> buffer)
+        public override void OnRecvPacket(ArraySegment<byte> buffer)
         {
             ushort size = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
             ushort id = BitConverter.ToUInt16(buffer.Array, buffer.Offset + 2);
