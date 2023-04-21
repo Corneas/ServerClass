@@ -17,6 +17,7 @@ class PacketHandler
 			return;
         }
 
-		clientSession.Room.BroadCast(clientSession, chatPacket.chat);
+		//clientSession.Room.BroadCast(clientSession, chatPacket.chat);
+		clientSession.Room.Push(() => clientSession.Room.BroadCast(clientSession, chatPacket.chat));
 	}
 }

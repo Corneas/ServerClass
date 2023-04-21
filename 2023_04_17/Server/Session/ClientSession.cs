@@ -20,7 +20,8 @@ namespace Server
 
 			// 채팅이 열릴 게임룸 생성
 			// 입장
-			Program.Room.Enter(this);
+			//Program.Room.Enter(this);
+			Program.Room.Push(() => Program.Room.Enter(this));
 
 			//Packet packet = new Packet() { size = 100, packetId = 10 };
 
@@ -49,7 +50,8 @@ namespace Server
 			if(Room != null)
             {
 				// 퇴장
-				Room.Leave(this);
+				//Room.Leave(this);
+				Room.Push(() => Room.Leave(this));
 				Room = null;
             }
 

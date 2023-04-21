@@ -16,6 +16,12 @@ namespace Server
 		static Listener _listener = new Listener();
 		public static GameRoom Room = new GameRoom();
 
+		static void FlushRoom()
+        {
+			Room.Push(() => Room.Flush());
+			JobTimer.Instance.Push(FlushRoom, 250);
+        }
+
 		static void Main(string[] args)
 		{
 			//PacketManager.Instance.Register();
@@ -29,9 +35,16 @@ namespace Server
 			_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
 			Console.WriteLine("Listening...");
 
+			int roomTick = 0;
 			while (true)
 			{
-				;
+				int now = System.Environment.TickCount;
+				// 현재 시간이 저장된 roomTick보다 나중이라면
+				if(roomTick < now)
+                {
+					Room.Push(() => Room.Flush());
+					Thread.Sleep(250);
+				}
 			}
 		}
 	}

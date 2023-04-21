@@ -22,7 +22,7 @@ namespace DummyClient
 			Connector connector = new Connector();
 
 			// 10개의 클라이언트 접속
-			connector.Connect(endPoint, () => { return SessionManager.Instance.Generate(); }, 100);
+			connector.Connect(endPoint, () => { return SessionManager.Instance.Generate(); }, 6000);
 
 			while (true)
 			{
