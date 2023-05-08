@@ -39,6 +39,7 @@ namespace DummyClient
 					movePacket.posY = 1;
 					movePacket.posZ = _rand.Next(-50, 50);
 
+					// 서버쪽에 전송
 					session.Send(movePacket.Write());
 				}
 			}

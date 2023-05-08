@@ -68,18 +68,18 @@ public class PlayerController : CreatureController
 	}
 
 	// 0.5초마다 스킬 쿨타임 추가
-	IEnumerator CoStartPunch()
-	{
-		// 피격 판정 - 평타가 나오는 즉시
-		GameObject go = Managers.Object.Find(GetFrontCellPos());
-		// GetFrontCellPos : 바로 앞의 Cell의 위치를 반환해주는 간단한 함수
-		if (go != null)
-		{
-			Debug.Log(go.name);
-		}
-		// 0.5초 뒤 자동으로 Idle State로 돌아감
-		yield return new WaitForSeconds(0.5f);
-		State = CreatureState.Idle;
-		_coSkill = null;
-	}
+	//IEnumerator CoStartPunch()
+	//{
+	//	// 피격 판정 - 평타가 나오는 즉시
+	//	GameObject go = Managers.Object.Find(GetFrontCellPos());
+	//	// GetFrontCellPos : 바로 앞의 Cell의 위치를 반환해주는 간단한 함수
+	//	if (go != null)
+	//	{
+	//		Debug.Log(go.name);
+	//	}
+	//	// 0.5초 뒤 자동으로 Idle State로 돌아감
+	//	yield return new WaitForSeconds(0.5f);
+	//	State = CreatureState.Idle;
+	//	_coSkill = null;
+	//}
 }

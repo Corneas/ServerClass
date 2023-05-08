@@ -43,8 +43,10 @@ public class PacketManager
 		if (_makeFunc.TryGetValue(id, out func))
 		{
 			IPacket packet = func.Invoke(session, buffer);
+			// 옵션이 있다면 실행
 			if (onRecvCallback != null)
 				onRecvCallback.Invoke(session, packet);
+			// 없다면 바로 HandlePacket 실행
 			else
 				HandlePacket(session, packet);
 		}
@@ -57,6 +59,7 @@ public class PacketManager
 		return pkt;
 	}
 
+	// MakePacket에 있던 내용을 따로 분리하여 바로 실행하는 것이 아닌, 필요할 때 꺼내서 사용할 수 있게끔 변경
 	public void HandlePacket(PacketSession session, IPacket packet)
 	{
 		Action<PacketSession, IPacket> action = null;
