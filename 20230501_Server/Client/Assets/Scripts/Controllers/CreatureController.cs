@@ -11,8 +11,8 @@ public class CreatureController : MonoBehaviour
     protected Animator _animator;
     protected SpriteRenderer _sprite;
 
-    CreatureState _state = CreatureState.Idle;
-    public CreatureState State
+    protected CreatureState _state = CreatureState.Idle;
+    public virtual CreatureState State
     {
         get { return _state; }
         set
@@ -25,8 +25,8 @@ public class CreatureController : MonoBehaviour
         }
     }
 
-    MoveDir _lastDir = MoveDir.Down;
-    MoveDir _dir = MoveDir.Down;
+    protected MoveDir _lastDir = MoveDir.Down;
+    protected MoveDir _dir = MoveDir.Down;
     public MoveDir Dir
     {
         get { return _dir; }
@@ -41,6 +41,29 @@ public class CreatureController : MonoBehaviour
 
             UpdateAnimation();
         }
+    }
+
+    public Vector3Int GetFrontCellPos()
+    {
+        Vector3Int cellPos = CellPos;
+
+        switch (_lastDir)
+        {
+            case MoveDir.Up:
+                cellPos += Vector3Int.up;
+                break;
+            case MoveDir.Down:
+                cellPos += Vector3Int.down;
+                break;
+            case MoveDir.Left:
+                cellPos += Vector3Int.left;
+                break;
+            case MoveDir.Right:
+                cellPos += Vector3Int.right;
+                break;
+        }
+
+        return cellPos;
     }
 
     protected virtual void UpdateAnimation()
@@ -170,9 +193,10 @@ public class CreatureController : MonoBehaviour
         {
             transform.position = destPos;
             // 예외적으로 애니메이션을 직접 컨트롤
-            _state = CreatureState.Idle;
-            if (_dir == MoveDir.None)
-                UpdateAnimation();
+            //_state = CreatureState.Idle;
+            //if (_dir == MoveDir.None)
+            //    UpdateAnimation();
+            MoveToNextPos();
         }
         else
         {
@@ -181,40 +205,54 @@ public class CreatureController : MonoBehaviour
         }
     }
 
-    // 이동 가능한 상태일 때, 실제 좌표를 이동한다
-    protected virtual void UpdateIdle()
+    protected virtual void MoveToNextPos()
     {
-        // 움직이지 않을 때 만, 다음 칸 이동하도록
-        if (/*State == CreatureState.Idle && */_dir != MoveDir.None)
+        if (_dir == MoveDir.None)
         {
-            Vector3Int destPos = CellPos;
+            State = CreatureState.Idle;
+            return;
+        }
 
-            switch (_dir)
-            {
-                case MoveDir.Up:
-                    destPos += Vector3Int.up;
-                    break;
-                case MoveDir.Down:
-                    destPos += Vector3Int.down;
-                    break;
-                case MoveDir.Left:
-                    destPos += Vector3Int.left;
-                    break;
-                case MoveDir.Right:
-                    destPos += Vector3Int.right;
-                    break;
-            }
+        Vector3Int destPos = CellPos;
 
-            if (Managers.Map.CanGo(destPos))
+        switch (_dir)
+        {
+            case MoveDir.Up:
+                destPos += Vector3Int.up;
+                break;
+            case MoveDir.Down:
+                destPos += Vector3Int.down;
+                break;
+            case MoveDir.Left:
+                destPos += Vector3Int.left;
+                break;
+            case MoveDir.Right:
+                destPos += Vector3Int.right;
+                break;
+        }
+
+        if (Managers.Map.CanGo(destPos))
+        {
+            // 목적위치에 물체 유무 판별, 없다면 이동 가능
+            if(Managers.Object.Find(destPos) == null)
             {
-                // 목적위치에 물체 유무 판별, 없다면 이동 가능
                 CellPos = destPos;
-                State = CreatureState.Moving;
             }
         }
     }
 
+    // 이동 가능한 상태일 때, 실제 좌표를 이동한다
+    protected virtual void UpdateIdle()
+    {
+
+    }
+
     protected virtual void UpdateSkill()
+    {
+
+    }
+
+    public virtual void OnDamaged()
     {
 
     }
