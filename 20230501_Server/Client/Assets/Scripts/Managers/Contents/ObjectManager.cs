@@ -1,4 +1,4 @@
-using System;
+癤퓎sing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +37,6 @@ public class ObjectManager
 	{
 		foreach (GameObject obj in _objects)
 		{
-			// 입력된 목적 오브젝트가 플레이어가 맞다면 플레이어 오브젝트 반환
 			if (condition.Invoke(obj))
 				return obj;
 		}

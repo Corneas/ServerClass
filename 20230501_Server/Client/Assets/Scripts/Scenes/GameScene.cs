@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class GameScene : BaseScene
 {
@@ -10,28 +12,9 @@ public class GameScene : BaseScene
 
         Managers.Map.LoadMap(1);
 
-        // 플레이어 등록
-        GameObject player = Managers.Resource.Instantiate("Creature/Player");
-        player.name = "Player";
-        Managers.Object.Add(player);
-
-        // 몬스터 5마리 등록
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject monster = Managers.Resource.Instantiate("Creature/Monster");
-            monster.name = $"Monster_{i + 1}";  // 몬스터 ID 부여
-
-            // 랜덤 위치 스폰 - 일단 겹쳐도 OK
-            Vector3Int pos = new Vector3Int()
-            {
-                x = Random.Range(-20, 20),
-                y = Random.Range(-10, 10),
-            };
-            MonsterController mc = monster.GetComponent<MonsterController>();
-            mc.CellPos = pos;
-
-            Managers.Object.Add(monster);
-        }
+        //GameObject player = Managers.Resource.Instantiate("Creature/Player");
+        //player.name = "Player";
+        //Managers.Object.Add(player);
 
 
         //Managers.UI.ShowSceneUI<UI_Inven>();
@@ -45,10 +28,12 @@ public class GameScene : BaseScene
         //GameObject go = new GameObject { name = "SpawningPool" };
         //SpawningPool pool = go.GetOrAddComponent<SpawningPool>();
         //pool.SetKeepMonsterCount(2);
+
+        Screen.SetResolution(640, 480, false);
     }
 
     public override void Clear()
     {
-
+        
     }
 }
