@@ -5,12 +5,18 @@ using static Define;
 
 public class MonsterController : CreatureController
 {
+    Coroutine _coSkill; // 몬스터 스킬
     Coroutine _coPatrol;
     Coroutine _coSearch;
     Vector3Int _destCellPos;
 
     GameObject _target; // 공격 대상 변수
     float _searchRange = 5.0f; // 서칭 범위
+    
+    [SerializeField]
+    private float _skillRange = 1.0f; // 스킬공격범위 1
+
+    private bool _rangeSkill = false;
 
     public override CreatureState State
     {
@@ -43,6 +49,12 @@ public class MonsterController : CreatureController
         Dir = MoveDir.None;
 
         _speed = 3.0f;
+        _rangeSkill = (Random.Range(0, 2) == 0 ? true : false);
+
+        if (_rangeSkill)
+            _skillRange = 10.0f;
+        else
+            _skillRange = 1.0f;
     }
 
     protected override void UpdateIdle()
@@ -63,7 +75,27 @@ public class MonsterController : CreatureController
         Vector3Int destPos = _destCellPos;
         // 타겟이 있다면, 타겟으로 목적지 설정
         if (_target != null)
+        {
             destPos = _target.GetComponent<CreatureController>().CellPos;
+
+            // 타겟위치 - 몬스터위치
+            Vector3Int dir = destPos - CellPos;
+            // 타겟이 스킬범위 내 일때
+            if (dir.magnitude <= _skillRange && (dir.x == 0 || dir.y == 0))
+            {
+                // 스킬 사용 전, 방향 지정
+                Dir = GetDirFromVec(dir);
+                // 스킬 사용 상태로 전환
+                State = CreatureState.Skill;
+
+                if (_rangeSkill)
+                    _coSkill = StartCoroutine(CoStartShootArrow()); // 화살공격
+                else
+                    _coSkill = StartCoroutine(CoStartPunch());  // 펀치
+
+                return;
+            }
+        }
 
         // FindPath = A*알고리즘 호출, ignoreDest : 가는 길에 장애물 있어도 충돌로 인식하지 않는 기능
         List<Vector3Int> path = Managers.Map.FindPath(CellPos, destPos, ignoreDestCollision: true);
@@ -167,5 +199,42 @@ public class MonsterController : CreatureController
                 return true;
             });
         }
+    }
+
+    // 0.5초마다 스킬 쿨타임 추가
+    IEnumerator CoStartPunch()
+    {
+        // 피격 판정 - 평타가 나오는 즉시
+        GameObject go = Managers.Object.Find(GetFrontCellPos());
+        // GetFrontCellPos : 바로 앞의 Cell의 위치를 반환해주는 간단한 함수
+        if (go != null)
+        {
+            CreatureController cc = go.GetComponent<CreatureController>();
+            if (cc != null)
+            {
+                cc.OnDamaged();
+            }
+            Debug.Log(go.name);
+        }
+        // 0.5초 뒤 자동으로 Idle State로 돌아감
+        //_rangeSkill = false;
+        yield return new WaitForSeconds(0.5f);
+        State = CreatureState.Idle;
+        _coSkill = null;
+    }
+
+    // 화살 스킬
+    IEnumerator CoStartShootArrow()
+    {
+        GameObject go = Managers.Resource.Instantiate("Creature/Arrow");
+        ArrowController arrowController = go.GetComponent<ArrowController>();
+        arrowController.Dir = _lastDir;     // 플레이어와 화살의 방향 같아야
+        arrowController.CellPos = CellPos;  // 내 위치에서 발사
+
+        // 0.3초 마다 발사
+        //_rangeSkill = true;
+        yield return new WaitForSeconds(0.3f);
+        State = CreatureState.Idle;
+        _coSkill = null;
     }
 }
