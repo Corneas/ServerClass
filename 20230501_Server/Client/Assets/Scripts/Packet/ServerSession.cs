@@ -10,6 +10,12 @@ public class ServerSession : PacketSession
 	public override void OnConnected(EndPoint endPoint)
 	{
 		Debug.Log($"OnConnected : {endPoint}");
+		// 보낼 패킷 큐에 누적시킴
+		PacketManager.Instance.CustomHandler = (s, m, i) =>
+		{
+			// id와 패킷을 큐에 입력
+			PacketQueue.Instance.Push(i, m);
+		};
 	}
 
 	public override void OnDisconnected(EndPoint endPoint)

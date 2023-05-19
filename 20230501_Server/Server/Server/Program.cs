@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using Google.Protobuf.WellKnownTypes;
+using Server.Game;
 using ServerCore;
 
 namespace Server
@@ -24,6 +25,9 @@ namespace Server
 
 		static void Main(string[] args)
 		{
+			// 추후엔 RoomNum도 넣어 Add할 수 있음
+			RoomManager.Instance.Add();
+
 			// DNS (Domain Name System)
 			string host = Dns.GetHostName();
 			IPHostEntry ipHost = Dns.GetHostEntry(host);

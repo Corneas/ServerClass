@@ -1,22 +1,54 @@
-﻿using System;
+﻿using Google.Protobuf.Protocol;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectManager
 {
-	//Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
-	List<GameObject> _objects = new List<GameObject>();
+	public MyPlayerController MyPlayer { get; set; }
+	// ID에 따라 Object 구분 (MyPlayer, Player, Monster, Item, etc)
+	Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
+	//List<GameObject> _objects = new List<GameObject>();
 
-	public void Add(GameObject go)
+	public void Add(PlayerInfo info, bool myPlayer = false)
 	{
-		_objects.Add(go);
+        // 내 플레이어일 때
+        if (myPlayer)
+        {
+			GameObject go = Managers.Resource.Instantiate("Creature/MyPlayer");
+			go.name = info.Name;
+			_objects.Add(info.PlayerId, go);
+
+			MyPlayer = go.GetComponent<MyPlayerController>();
+			MyPlayer.Id = info.PlayerId;
+			MyPlayer.CellPos = new Vector3Int(info.PosX, info.PosY, 0);
+        }
+		else
+		{
+			GameObject go = Managers.Resource.Instantiate("Creature/Player");
+			go.name = info.Name;
+			_objects.Add(info.PlayerId, go);
+
+			PlayerController pc = go.GetComponent<PlayerController>();
+			pc.Id = info.PlayerId;
+			pc.CellPos = new Vector3Int(info.PosX, info.PosY, 0);
+		}
 	}
 
-	public void Remove(GameObject go)
+	public void Remove(int id)
 	{
-		_objects.Remove(go);
+		_objects.Remove(id);
 	}
+
+	public void RemoveMyPlayer()
+    {
+		if (MyPlayer == null)
+			return;
+
+		Remove(MyPlayer.Id);
+		MyPlayer = null;
+    }
 
 	public GameObject Find(Vector3Int cellPos)
 	{

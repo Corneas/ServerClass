@@ -8,11 +8,13 @@ using ServerCore;
 using System.Net;
 using Google.Protobuf.Protocol;
 using Google.Protobuf;
+using Server.Game;
 
 namespace Server
 {
 	class ClientSession : PacketSession
 	{
+		public Player MyPlayer { get; set; }	// 플레이어 구분
 		public int SessionId { get; set; }
 
 		public void Send(IMessage packet)
@@ -24,7 +26,7 @@ namespace Server
 			
 			ushort size = (ushort)packet.CalculateSize();
 			byte[] sendBuffer = new byte[size + 4];
-			Array.Copy(BitConverter.GetBytes(size + 4), 0, sendBuffer, 0, sizeof(ushort));
+			Array.Copy(BitConverter.GetBytes((ushort)(size + 4)), 0, sendBuffer, 0, sizeof(ushort));
 			// ushort protocolId = (ushort)MsgId.SChat;
 			Array.Copy(BitConverter.GetBytes((ushort)msgId), 0, sendBuffer, 2, sizeof(ushort));
 			Array.Copy(packet.ToByteArray(), 0, sendBuffer, 4, size);
@@ -37,10 +39,26 @@ namespace Server
 			Console.WriteLine($"OnConnected : {endPoint}");
 
 			// PROTO Test
-			S_Chat chat = new S_Chat()
-			{
-				Context = "안녕하세요"
-			};
+
+			// 플레이어 정보 추가 위한 패킷 생성
+			MyPlayer = PlayerManager.Instance.Add();
+            {
+				// 플레이어 아이디를 네임으로
+				MyPlayer.Info.Name = $"Player_{MyPlayer.Info.PlayerId}";
+				MyPlayer.Info.PosInfo.State = CreatureState.Idle;
+				MyPlayer.Info.PosInfo.MoveDir = MoveDir.None;
+				MyPlayer.Info.PosInfo.PosX = 0;
+				MyPlayer.Info.PosInfo.PosY = 0;
+				// 현재 세션
+				MyPlayer.Session = this;
+            }
+
+			RoomManager.Instance.Find(1).EnterGame(MyPlayer);
+
+			//S_Chat chat = new S_Chat()
+			//{
+			//	Context = "안녕하세요"
+			//};
 
 			//S_Chat chat2 = new S_Chat();
 			//chat2.MergeFrom(sendBuffer, 4, sendBuffer.Length - 4);
@@ -48,7 +66,7 @@ namespace Server
 			//////////////////////////
 			//Program.Room.Push(() => Program.Room.Enter(this));
 
-			Send(chat);
+			//Send(chat);
 		}
 
 		public override void OnRecvPacket(ArraySegment<byte> buffer)
