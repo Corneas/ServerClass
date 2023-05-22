@@ -57,6 +57,36 @@ class PacketHandler
 		S_Move movePacket = packet as S_Move;
 		ServerSession serverSession = session as ServerSession;
 
-		Debug.Log("S_MoveHandler");
+		//Debug.Log("S_MoveHandler");
+
+		// 누가 이동하는지 찾기
+		GameObject go = Managers.Object.FindById(movePacket.PlayerId);
+		// 못찾으면 종료
+		if(go == null)
+			return;
+
+		// 크리쳐 정보 수정을 위해, 크리쳐 컨트롤러 접근
+		CreatureController cc = go.GetComponent<CreatureController>();
+		if(cc == null)
+			return;
+
+		// S_Move의 값을 바로 크리쳐의 PosInfo로 넘겨준다. (데이터 수신)
+		cc.PosInfo = movePacket.PosInfo;
+	}
+
+	public static void S_SkillHandler(PacketSession session, IMessage packet)
+	{
+		S_Skill skillPacket = packet as S_Skill;
+
+		GameObject go = Managers.Object.FindById(skillPacket.PlayerId);
+		// 못찾으면 종료
+		if (go == null)
+			return;
+
+		PlayerController pc = go.GetComponent<PlayerController>();
+		if(pc != null)
+        {
+			pc.UseSkill(skillPacket.Info.SkillId);
+        }
 	}
 }

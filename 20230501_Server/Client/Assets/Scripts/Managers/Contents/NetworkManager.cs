@@ -10,9 +10,9 @@ public class NetworkManager
 {
 	ServerSession _session = new ServerSession();
 
-	public void Send(ArraySegment<byte> sendBuff)
+	public void Send(IMessage packet)
 	{
-		_session.Send(sendBuff);
+		_session.Send(packet);
 	}
 
 	public void Init()
@@ -38,7 +38,7 @@ public class NetworkManager
 			Action<PacketSession, IMessage> handler = PacketManager.Instance.GetPacketHandler(packet.Id);
 			if (handler != null)
 				handler.Invoke(_session, packet.Message);
-		}	
+		}
 	}
 
 }

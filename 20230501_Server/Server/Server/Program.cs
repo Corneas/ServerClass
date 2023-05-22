@@ -25,7 +25,6 @@ namespace Server
 
 		static void Main(string[] args)
 		{
-			// 추후엔 RoomNum도 넣어 Add할 수 있음
 			RoomManager.Instance.Add();
 
 			// DNS (Domain Name System)

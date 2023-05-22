@@ -11,21 +11,23 @@ enum MsgId {
   S_DESPAWN = 3;
   C_MOVE = 4;
   S_MOVE = 5;
+  C_SKILL = 6;
+  S_SKILL = 7;
 }
 
-enum CreatureState{
+enum CreatureState {
   IDLE = 0;
   MOVING = 1;
   SKILL = 2;
   DEAD = 3;
 }
 
-enum MoveDir{
-  None = 0;
-  Up = 1;
-  Down = 2;
-  Left = 3;
-  Right = 4;
+enum MoveDir {
+  NONE = 0;
+  UP = 1;
+  DOWN = 2;
+  LEFT = 3;
+  RIGHT = 4;
 }
 
 message S_EnterGame {
@@ -48,8 +50,17 @@ message C_Move {
 }
 
 message S_Move {
-  int32 playerId =1;
+  int32 playerId = 1;
   PositionInfo posInfo = 2;
+}
+
+message C_Skill {
+  SkillInfo info = 1;
+}
+
+message S_Skill {
+  int32 playerId = 1;
+  SkillInfo info = 2;
 }
 
 message PlayerInfo {
@@ -58,9 +69,13 @@ message PlayerInfo {
   PositionInfo posInfo = 3;
 }
 
-message PositionInfo{
+message PositionInfo {
   CreatureState state = 1;
   MoveDir moveDir = 2;
   int32 posX = 3;
   int32 posY = 4;
+}
+
+message SkillInfo {
+  int32 skillId = 1;
 }

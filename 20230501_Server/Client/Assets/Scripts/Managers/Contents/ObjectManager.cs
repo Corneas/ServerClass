@@ -7,23 +7,21 @@ using UnityEngine;
 public class ObjectManager
 {
 	public MyPlayerController MyPlayer { get; set; }
-	// ID에 따라 Object 구분 (MyPlayer, Player, Monster, Item, etc)
 	Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
-	//List<GameObject> _objects = new List<GameObject>();
 
 	public void Add(PlayerInfo info, bool myPlayer = false)
 	{
-        // 내 플레이어일 때
-        if (myPlayer)
-        {
+		if (myPlayer)
+		{
 			GameObject go = Managers.Resource.Instantiate("Creature/MyPlayer");
 			go.name = info.Name;
 			_objects.Add(info.PlayerId, go);
 
 			MyPlayer = go.GetComponent<MyPlayerController>();
 			MyPlayer.Id = info.PlayerId;
-			MyPlayer.CellPos = new Vector3Int(info.PosX, info.PosY, 0);
-        }
+			MyPlayer.PosInfo = info.PosInfo;
+			MyPlayer.SyncPos();
+		}
 		else
 		{
 			GameObject go = Managers.Resource.Instantiate("Creature/Player");
@@ -32,27 +30,40 @@ public class ObjectManager
 
 			PlayerController pc = go.GetComponent<PlayerController>();
 			pc.Id = info.PlayerId;
-			pc.CellPos = new Vector3Int(info.PosX, info.PosY, 0);
+			pc.PosInfo = info.PosInfo;
+			pc.SyncPos();
 		}
 	}
 
 	public void Remove(int id)
 	{
+		GameObject go = FindById(id);
+		if (go == null)
+			return;
+
 		_objects.Remove(id);
+		Managers.Resource.Destroy(go);
 	}
 
 	public void RemoveMyPlayer()
-    {
+	{
 		if (MyPlayer == null)
 			return;
 
 		Remove(MyPlayer.Id);
 		MyPlayer = null;
-    }
+	}
+
+	public GameObject FindById(int id)
+	{
+		GameObject go = null;
+		_objects.TryGetValue(id, out go);
+		return go;
+	}
 
 	public GameObject Find(Vector3Int cellPos)
 	{
-		foreach (GameObject obj in _objects)
+		foreach (GameObject obj in _objects.Values)
 		{
 			CreatureController cc = obj.GetComponent<CreatureController>();
 			if (cc == null)
@@ -67,7 +78,7 @@ public class ObjectManager
 
 	public GameObject Find(Func<GameObject, bool> condition)
 	{
-		foreach (GameObject obj in _objects)
+		foreach (GameObject obj in _objects.Values)
 		{
 			if (condition.Invoke(obj))
 				return obj;
@@ -78,6 +89,8 @@ public class ObjectManager
 
 	public void Clear()
 	{
+		foreach (GameObject obj in _objects.Values)
+			Managers.Resource.Destroy(obj);
 		_objects.Clear();
 	}
 }

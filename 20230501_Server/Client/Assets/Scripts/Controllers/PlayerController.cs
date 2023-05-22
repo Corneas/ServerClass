@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Google.Protobuf.Protocol;
+using System.Collections;
 using System.Collections.Generic;
 //using UnityEditor.Rendering;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class PlayerController : CreatureController
 
 	protected override void UpdateAnimation()
 	{
-		if (_state == CreatureState.Idle)
+		if (PosInfo.State == CreatureState.Idle)
 		{
 			switch (_lastDir)
 			{
@@ -38,9 +39,9 @@ public class PlayerController : CreatureController
 					break;
 			}
 		}
-		else if (_state == CreatureState.Moving)
+		else if (State == CreatureState.Moving)
 		{
-			switch (_dir)
+			switch (Dir)
 			{
 				case MoveDir.Up:
 					_animator.Play("WALK_BACK");
@@ -60,7 +61,7 @@ public class PlayerController : CreatureController
 					break;
 			}
 		}
-		else if (_state == CreatureState.Skill)
+		else if (PosInfo.State == CreatureState.Skill)
 		{
 			switch (_lastDir)
 			{
@@ -148,20 +149,24 @@ public class PlayerController : CreatureController
 
 	IEnumerator CoStartPunch()
 	{
-		// 피격 판정
-		GameObject go = Managers.Object.Find(GetFrontCellPos());
-		if (go != null)
-		{
-			CreatureController cc = go.GetComponent<CreatureController>();
-			if (cc != null)
-				cc.OnDamaged();
-		}
+		//// 피격 판정
+		//GameObject go = Managers.Object.Find(GetFrontCellPos());
+		//if (go != null)
+		//{
+		//	CreatureController cc = go.GetComponent<CreatureController>();
+		//	if (cc != null)
+		//		cc.OnDamaged();
+		//}
 
 		// 대기 시간
 		_rangedSkill = false;
+		State = CreatureState.Skill;
+		// 스킬 사용 여부는 서버에서 체크해주기도 하지만, 클라쪽에서도 대기를 걸어 무한정한 스킬 사용 요청을 방지
 		yield return new WaitForSeconds(0.5f);
+
 		State = CreatureState.Idle;
 		_coSkill = null;
+		CheckUpdatedFlag();
 	}
 
 	IEnumerator CoStartShootArrow()
@@ -182,4 +187,17 @@ public class PlayerController : CreatureController
 	{
 		Debug.Log("Player HIT !");
 	}
+
+	public void UseSkill(int skillId)
+    {
+		if(skillId == 1)
+        {
+			_coSkill = StartCoroutine(CoStartPunch());
+        }
+    }
+
+	protected virtual void CheckUpdatedFlag()
+    {
+
+    }
 }

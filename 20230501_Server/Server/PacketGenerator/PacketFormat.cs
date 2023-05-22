@@ -29,7 +29,7 @@ class PacketManager
 	Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>>();
 	Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new Dictionary<ushort, Action<PacketSession, IMessage>>();
 		
-	public Action<PacketSession, IMessage, ushort> CustomHandler {{get; set;}}
+	public Action<PacketSession, IMessage, ushort> CustomHandler {{ get; set; }}
 
 	public void Register()
 	{{{0}
@@ -53,9 +53,10 @@ class PacketManager
 	{{
 		T pkt = new T();
 		pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);
-		if(CustomHanlder != null)
+
+		if (CustomHandler != null)
 		{{
-			CustomHanndler.Invoke(session, pkt, id);
+			CustomHandler.Invoke(session, pkt, id);
 		}}
 		else
 		{{

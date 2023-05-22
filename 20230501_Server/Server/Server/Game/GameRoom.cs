@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Server.Game
 {
-	class GameRoom
+	public class GameRoom
 	{
 		object _lock = new object();
 		public int RoomId { get; set; }
@@ -29,8 +29,7 @@ namespace Server.Game
 					enterPacket.Player = newPlayer.Info;
 					newPlayer.Session.Send(enterPacket);
 
-					S_Spawn spawnPacket = new S_Spawn();	// 접속 안내 패킷
-					// 나를 제외한 방에 존재하는 타인의 정보만 모아서 나에게 패킷 전송
+					S_Spawn spawnPacket = new S_Spawn();
 					foreach (Player p in _players)
 					{
 						if (newPlayer != p)
@@ -42,8 +41,7 @@ namespace Server.Game
 				// 타인한테 정보 전송
 				{
 					S_Spawn spawnPacket = new S_Spawn();
-					spawnPacket.Players.Add(newPlayer.Info);	// 새로운 플레이어 정보를 패킷에 넣고
-					//	새 플레이어 제외한 방에 존재하는 모든 플레이어에게 정보 패킷 브로드캐스트
+					spawnPacket.Players.Add(newPlayer.Info);
 					foreach (Player p in _players)
 					{
 						if (newPlayer != p)
@@ -57,30 +55,23 @@ namespace Server.Game
 		{
 			lock (_lock)
 			{
-				// 나가려는 플레이어의 ID 탐색
 				Player player = _players.Find(p => p.Info.PlayerId == playerId);
-				// 없다면 종료
 				if (player == null)
 					return;
 
-				// 있다면 제거
 				_players.Remove(player);
 				player.Room = null;
 
 				// 본인한테 정보 전송
 				{
 					S_LeaveGame leavePacket = new S_LeaveGame();
-					// 나가도 된다는 패킷 나에게 전송
 					player.Session.Send(leavePacket);
 				}
 
 				// 타인한테 정보 전송
 				{
-					// 사라진 플레이어 안내 패킷
 					S_Despawn despawnPacket = new S_Despawn();
-					// 사라질 플레이어 입력
 					despawnPacket.PlayerIds.Add(player.Info.PlayerId);
-					// 사라질 플레이어 외 모든 플레이어에게 전송
 					foreach (Player p in _players)
 					{
 						if (player != p)
@@ -90,15 +81,64 @@ namespace Server.Game
 			}
 		}
 
+		public void HandleMove(Player player, C_Move movePacket)
+		{
+			if (player == null)
+				return;
+
+			lock (_lock)
+			{
+				// TODO : 검증
+
+				// 일단 서버에서 좌표 이동
+				PlayerInfo info = player.Info;
+				info.PosInfo = movePacket.PosInfo;
+
+				// 다른 플레이어한테도 알려준다
+				S_Move resMovePacket = new S_Move();
+				resMovePacket.PlayerId = player.Info.PlayerId;
+				resMovePacket.PosInfo = movePacket.PosInfo;
+
+				Broadcast(resMovePacket);
+
+				// TODO : 데미지 판정
+			}
+		}
+
+		public void HandleSkill(Player player, C_Skill skillPacket)
+		{
+			if (player == null)
+				return;
+
+			lock (_lock)
+			{
+				PlayerInfo info = player.Info;
+				if (info.PosInfo.State != CreatureState.Idle)
+					return;
+
+				// TODO : 스킬 사용 가능 여부 체크
+
+				// 통과
+				info.PosInfo.State = CreatureState.Skill;
+
+				S_Skill skill = new S_Skill() { Info = new SkillInfo() };
+				skill.PlayerId = info.PlayerId;
+				skill.Info.SkillId = 1;
+				Broadcast(skill);
+
+				// TODO : 데미지 판정
+			}
+		}
+
 		public void Broadcast(IMessage packet)
-        {
-            lock (_lock)
-            {
-				foreach(Player p in _players)
-                {
+		{
+			lock (_lock)
+			{
+				foreach (Player p in _players)
+				{
 					p.Session.Send(packet);
-                }
-            }
-        }
+				}
+			}
+		}
 	}
 }
