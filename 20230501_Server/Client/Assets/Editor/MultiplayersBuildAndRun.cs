@@ -6,7 +6,7 @@ using UnityEngine;
 public class MultiplayersBuildAndRun
 {
 	[MenuItem("Tools/Run Multiplayer/2 Players")]
-	static void PerformWin64Build2()	
+	static void PerformWin64Build2()
 	{
 		PerformWin64Build(2);
 	}
@@ -23,12 +23,11 @@ public class MultiplayersBuildAndRun
 		PerformWin64Build(4);
 	}
 
-	static void PerformWin64Build(int playerCount)	
+	static void PerformWin64Build(int playerCount)
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(
 			BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows);
 
-		// 플레이어 수 만큼, 자동으로 생성
 		for (int i = 1; i <= playerCount; i++)
 		{
 			BuildPipeline.BuildPlayer(GetScenePaths(),
@@ -36,13 +35,13 @@ public class MultiplayersBuildAndRun
 				BuildTarget.StandaloneWindows64, BuildOptions.AutoRunPlayer);
 		}
 	}
-	// 프로젝트 이름 받아오기
+
 	static string GetProjectName()
 	{
 		string[] s = Application.dataPath.Split('/');
 		return s[s.Length - 2];
 	}
-	// 모든 씬의 경로 가져오기
+
 	static string[] GetScenePaths()
 	{
 		string[] scenes = new string[EditorBuildSettings.scenes.Length];
