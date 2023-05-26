@@ -25,7 +25,7 @@ namespace Server
 
 		static void Main(string[] args)
 		{
-			RoomManager.Instance.Add();
+			RoomManager.Instance.Add(1);
 
 			// DNS (Domain Name System)
 			string host = Dns.GetHostName();
@@ -37,11 +37,14 @@ namespace Server
 			Console.WriteLine("Listening...");
 
 			//FlushRoom();
-			JobTimer.Instance.Push(FlushRoom);
+			//JobTimer.Instance.Push(FlushRoom);
 
+			// TODO
 			while (true)
 			{
-				JobTimer.Instance.Flush();
+				//JobTimer.Instance.Flush();
+				RoomManager.Instance.Find(1).Update();
+				Thread.Sleep(100);
 			}
 		}
 	}

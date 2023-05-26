@@ -38,7 +38,7 @@ public class NetworkManager
 			Action<PacketSession, IMessage> handler = PacketManager.Instance.GetPacketHandler(packet.Id);
 			if (handler != null)
 				handler.Invoke(_session, packet.Message);
-		}
+		}	
 	}
 
 }

@@ -1,4 +1,4 @@
-using Google.Protobuf.Protocol;
+Ôªøusing Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +6,8 @@ using static Define;
 
 public class MyPlayerController : PlayerController
 {
+	bool _moveKeyPressed = false;
+
 	protected override void Init()
 	{
 		base.Init();
@@ -28,8 +30,8 @@ public class MyPlayerController : PlayerController
 
 	protected override void UpdateIdle()
 	{
-		// ¿Ãµø ªÛ≈¬∑Œ ∞•¡ˆ »Æ¿Œ
-		if (Dir != MoveDir.None)
+		// Ïù¥Îèô ÏÉÅÌÉúÎ°ú Í∞àÏßÄ ÌôïÏù∏
+		if (_moveKeyPressed)
 		{
 			State = CreatureState.Moving;
 			return;
@@ -37,8 +39,10 @@ public class MyPlayerController : PlayerController
 
 		if (_coSkillCooltime == null && Input.GetKey(KeyCode.Space))
 		{
+			Debug.Log("Skill !");
+
 			C_Skill skill = new C_Skill() { Info = new SkillInfo() };
-			skill.Info.SkillId = 1;
+			skill.Info.SkillId = 2;
 			Managers.Network.Send(skill);
 
 			_coSkillCooltime = StartCoroutine("CoInputCooltime", 0.2f);
@@ -57,9 +61,11 @@ public class MyPlayerController : PlayerController
 		Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
 	}
 
-	// ≈∞∫∏µÂ ¿‘∑¬
+	// ÌÇ§Î≥¥Îìú ÏûÖÎ†•
 	void GetDirInput()
 	{
+		_moveKeyPressed = true;
+
 		if (Input.GetKey(KeyCode.W))
 		{
 			Dir = MoveDir.Up;
@@ -78,13 +84,13 @@ public class MyPlayerController : PlayerController
 		}
 		else
 		{
-			Dir = MoveDir.None;
+			_moveKeyPressed = false;
 		}
 	}
 
 	protected override void MoveToNextPos()
 	{
-		if (Dir == MoveDir.None)
+		if (_moveKeyPressed == false)
 		{
 			State = CreatureState.Idle;
 			CheckUpdatedFlag();

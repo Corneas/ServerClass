@@ -10,7 +10,7 @@ using UnityEditor;
 
 public class MapEditor
 {
-
+	
 #if UNITY_EDITOR
 
 	// % (Ctrl), # (Shift), & (Alt)
@@ -18,6 +18,12 @@ public class MapEditor
 	[MenuItem("Tools/GenerateMap %#g")]
 	private static void GenerateMap()
 	{
+		GenerateByPath("Assets/Resources/Map");
+		GenerateByPath("../Common/MapData");
+	}
+
+	private static void GenerateByPath(string pathPrefix)
+    {
 		GameObject[] gameObjects = Resources.LoadAll<GameObject>("Prefabs/Map");
 
 		foreach (GameObject go in gameObjects)

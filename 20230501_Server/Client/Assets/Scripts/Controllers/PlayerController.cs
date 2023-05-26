@@ -1,14 +1,13 @@
 ﻿using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.Rendering;
 using UnityEngine;
 using static Define;
 
 public class PlayerController : CreatureController
 {
 	protected Coroutine _coSkill;
-	bool _rangedSkill = false;
+	protected bool _rangedSkill = false;
 
 	protected override void Init()
 	{
@@ -17,9 +16,12 @@ public class PlayerController : CreatureController
 
 	protected override void UpdateAnimation()
 	{
-		if (PosInfo.State == CreatureState.Idle)
+		if (_animator == null || _sprite == null)
+			return;
+
+		if (State == CreatureState.Idle)
 		{
-			switch (_lastDir)
+			switch (Dir)
 			{
 				case MoveDir.Up:
 					_animator.Play("IDLE_BACK");
@@ -61,9 +63,9 @@ public class PlayerController : CreatureController
 					break;
 			}
 		}
-		else if (PosInfo.State == CreatureState.Skill)
+		else if (State == CreatureState.Skill)
 		{
-			switch (_lastDir)
+			switch (Dir)
 			{
 				case MoveDir.Up:
 					_animator.Play(_rangedSkill ? "ATTACK_WEAPON_BACK" : "ATTACK_BACK");
@@ -90,80 +92,29 @@ public class PlayerController : CreatureController
 	}
 
 	protected override void UpdateController()
-	{
-		//switch (State)
-		//{
-		//	case CreatureState.Idle:
-		//		GetDirInput();
-		//		break;
-		//	case CreatureState.Moving:
-		//		GetDirInput();
-		//		break;
-		//}
-		
+	{		
 		base.UpdateController();
 	}
 
-	protected override void UpdateIdle()
+	public void UseSkill(int skillId)
 	{
-		// 이동 상태로 갈지 확인
-		if (Dir != MoveDir.None)
+		if (skillId == 1)
 		{
-			State = CreatureState.Moving;
-			return;
+			_coSkill = StartCoroutine("CoStartPunch");
 		}
-
-		//// 스킬 상태로 갈지 확인
-		//if (Input.GetKey(KeyCode.Space))
-		//{
-		//	State = CreatureState.Skill;
-		//	//_coSkill = StartCoroutine("CoStartPunch");
-		//	_coSkill = StartCoroutine("CoStartShootArrow");
-		//}
 	}
 
-	// 키보드 입력
-	void GetDirInput()
+	protected virtual void CheckUpdatedFlag()
 	{
-		if (Input.GetKey(KeyCode.W))
-		{
-			Dir = MoveDir.Up;
-		}
-		else if (Input.GetKey(KeyCode.S))
-		{
-			Dir = MoveDir.Down;
-		}
-		else if (Input.GetKey(KeyCode.A))
-		{
-			Dir = MoveDir.Left;
-		}
-		else if (Input.GetKey(KeyCode.D))
-		{
-			Dir = MoveDir.Right;
-		}
-		else
-		{
-			Dir = MoveDir.None;			
-		}
+
 	}
 
 	IEnumerator CoStartPunch()
 	{
-		//// 피격 판정
-		//GameObject go = Managers.Object.Find(GetFrontCellPos());
-		//if (go != null)
-		//{
-		//	CreatureController cc = go.GetComponent<CreatureController>();
-		//	if (cc != null)
-		//		cc.OnDamaged();
-		//}
-
 		// 대기 시간
 		_rangedSkill = false;
 		State = CreatureState.Skill;
-		// 스킬 사용 여부는 서버에서 체크해주기도 하지만, 클라쪽에서도 대기를 걸어 무한정한 스킬 사용 요청을 방지
 		yield return new WaitForSeconds(0.5f);
-
 		State = CreatureState.Idle;
 		_coSkill = null;
 		CheckUpdatedFlag();
@@ -173,7 +124,7 @@ public class PlayerController : CreatureController
 	{
 		GameObject go = Managers.Resource.Instantiate("Creature/Arrow");
 		ArrowController ac = go.GetComponent<ArrowController>();
-		ac.Dir = _lastDir;
+		ac.Dir = Dir;
 		ac.CellPos = CellPos;
 
 		// 대기 시간
@@ -187,17 +138,4 @@ public class PlayerController : CreatureController
 	{
 		Debug.Log("Player HIT !");
 	}
-
-	public void UseSkill(int skillId)
-    {
-		if(skillId == 1)
-        {
-			_coSkill = StartCoroutine(CoStartPunch());
-        }
-    }
-
-	protected virtual void CheckUpdatedFlag()
-    {
-
-    }
 }
