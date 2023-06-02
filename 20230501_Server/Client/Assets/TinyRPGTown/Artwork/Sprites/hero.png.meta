@@ -137,18 +137,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 512
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -415,18 +403,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hero_6: 21300012
+      hero_0: 21300000
       hero_1: 21300002
-      hero_3: 21300006
-      hero_9: 21300018
       hero_10: 21300020
       hero_11: 21300022
       hero_2: 21300004
-      hero_7: 21300014
-      hero_5: 21300010
-      hero_8: 21300016
-      hero_0: 21300000
+      hero_3: 21300006
       hero_4: 21300008
+      hero_5: 21300010
+      hero_6: 21300012
+      hero_7: 21300014
+      hero_8: 21300016
+      hero_9: 21300018
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
