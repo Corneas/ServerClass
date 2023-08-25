@@ -1,0 +1,8 @@
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\bin\Debug\BroadcastReceiver.exe.config
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\bin\Debug\BroadcastReceiver.exe
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\bin\Debug\BroadcastReceiver.pdb
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\obj\Debug\BroadcastReceiver.csproj.AssemblyReference.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\obj\Debug\BroadcastReceiver.csproj.SuggestedBindingRedirects.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\obj\Debug\BroadcastReceiver.csproj.CoreCompileInputs.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\obj\Debug\BroadcastReceiver.exe
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\BroadcastReceiver\obj\Debug\BroadcastReceiver.pdb

@@ -1,0 +1,15 @@
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\bin\Debug\UDPServer.exe.config
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\bin\Debug\UDPServer.exe
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\bin\Debug\UDPServer.pdb
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\obj\Debug\UDPServer.csproj.AssemblyReference.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\obj\Debug\UDPServer.csproj.SuggestedBindingRedirects.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\obj\Debug\UDPServer.csproj.CoreCompileInputs.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\obj\Debug\UDPServer.exe
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPServer\obj\Debug\UDPServer.pdb
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPServer\obj\Debug\UDPServer.csproj.AssemblyReference.cache
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPServer\obj\Debug\UDPServer.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPServer\obj\Debug\UDPServer.exe
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPServer\obj\Debug\UDPServer.pdb
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPServer\bin\Debug\UDPServer.exe.config
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPServer\bin\Debug\UDPServer.exe
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPServer\bin\Debug\UDPServer.pdb

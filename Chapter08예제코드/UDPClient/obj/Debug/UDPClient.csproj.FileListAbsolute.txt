@@ -1,0 +1,15 @@
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\bin\Debug\UDPClient.exe.config
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\bin\Debug\UDPClient.exe
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\bin\Debug\UDPClient.pdb
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\obj\Debug\UDPClient.csproj.AssemblyReference.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\obj\Debug\UDPClient.csproj.SuggestedBindingRedirects.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\obj\Debug\UDPClient.csproj.CoreCompileInputs.cache
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\obj\Debug\UDPClient.exe
+E:\OneDrive - 경기글로벌통상고등학교\[4] 수업\네트워크 프로그래밍\C#\Chapter08\UDPClient\obj\Debug\UDPClient.pdb
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPClient\bin\Debug\UDPClient.exe.config
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPClient\bin\Debug\UDPClient.exe
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPClient\bin\Debug\UDPClient.pdb
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPClient\obj\Debug\UDPClient.csproj.AssemblyReference.cache
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPClient\obj\Debug\UDPClient.csproj.CoreCompileInputs.cache
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPClient\obj\Debug\UDPClient.exe
+C:\Users\USER\ServerClass\Chapter08예제코드\UDPClient\obj\Debug\UDPClient.pdb
